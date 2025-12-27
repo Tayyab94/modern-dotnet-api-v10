@@ -1,9 +1,9 @@
-using GameStore.Api.Dtos;
 using GameStore.Api.Endpoints;
-using System.Runtime.InteropServices.Marshalling;
-using System.Xml.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// this will add all the services required for validation to work properly in the application layer of the project 
+builder.Services.AddValidation();
 
 var app = builder.Build();
 
