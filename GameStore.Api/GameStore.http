@@ -25,7 +25,7 @@ POST {{baseUrl}}/api/games
 Content-Type: application/json
 
 {
-  "name": "New No 8 Movie",
+  "name": "",
   "genera": "Adventure with had",
   "releaseDate": "2024-12-01",
   "price": 59.99
