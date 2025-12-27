@@ -9,19 +9,19 @@
 
 
 
-GET {{baseUrl}}/games
+GET {{baseUrl}}/api/games
 Accept: {{contentTyp}}
 
 ### 
 
 
-GET {{baseUrl}}/games/8
+GET {{baseUrl}}/api/games/8
 Accept: {{contentTyp}}
 ###
  
 
 ### POST
-POST {{baseUrl}}/games
+POST {{baseUrl}}/api/games
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
 ###
 
 ### POST
-PUT {{baseUrl}}/games/8
+PUT {{baseUrl}}/api/games/8
 Content-Type: application/json
   
 {
@@ -48,6 +48,6 @@ Content-Type: application/json
 
 ### Delete
 
-DELETE {{baseUrl}}/games/1
+DELETE {{baseUrl}}/api/games/1
 Accept: {{contentTyp}}
 
