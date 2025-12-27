@@ -1,0 +1,53 @@
+﻿@hostName= localhost
+@port=7042
+@baseUrl=https://{{hostName}}:{{port}}
+@contentTyp= application/json
+
+
+# GET https://localhost:7042/games
+# Accept: application/json\
+
+
+
+GET {{baseUrl}}/games
+Accept: {{contentTyp}}
+
+### 
+
+
+GET {{baseUrl}}/games/8
+Accept: {{contentTyp}}
+###
+ 
+
+### POST
+POST {{baseUrl}}/games
+Content-Type: application/json
+
+{
+  "name": "New No 8 Movie",
+  "genera": "Adventure with had",
+  "releaseDate": "2024-12-01",
+  "price": 59.99
+}
+
+###
+
+### POST
+PUT {{baseUrl}}/games/8
+Content-Type: application/json
+  
+{
+  "name": "New ab update",
+  "genera": "Edit Adventure with had",
+  "releaseDate": "2024-12-01",
+  "price": 24.3
+}
+
+###
+
+### Delete
+
+DELETE {{baseUrl}}/games/1
+Accept: {{contentTyp}}
+

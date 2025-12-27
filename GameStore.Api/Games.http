@@ -1,0 +1,196 @@
+﻿### Basic Multiple Endpoints for Game Store API
+
+### Get all games
+GET https://localhost:7042/games
+Accept: application/json
+
+### Get game by ID
+GET https://localhost:7042/games/1
+Accept: application/json
+
+### Create a new game
+POST https://localhost:7042/games
+Content-Type: application/json
+
+{
+  "name": "New Game",
+  "genre": "Action",
+  "price": 59.99
+}
+
+### Update game
+PUT https://localhost:7042/games/1
+Content-Type: application/json
+
+{
+  "name": "Updated Game",
+  "price": 49.99
+}
+
+### Delete game
+DELETE https://localhost:7042/games/1
+
+
+
+2. With Comments and Separators
+
+################################
+# GAMES ENDPOINTS
+################################
+
+### Get All Games
+GET https://localhost:7042/games
+
+### Get Single Game
+GET https://localhost:7042/games/{{gameId}}
+
+### Create Game
+POST https://localhost:7042/games
+Content-Type: application/json
+
+{
+  "name": "Sample Game"
+}
+
+################################
+# USERS ENDPOINTS (if you have)
+################################
+
+### Get All Users
+GET https://localhost:7042/users
+
+### Create User
+POST https://localhost:7042/users
+Content-Type: application/json
+
+{
+  "username": "john",
+  "email": "john@example.com"
+}
+
+
+### 3. Using Variables 
+
+@hostname = localhost
+@port = 7042
+@host = https://{{hostname}}:{{port}}
+@contentType = application/json
+
+### Get all games
+GET {{host}}/games
+Accept: {{contentType}}
+
+### Get game by ID
+GET {{host}}/games/5
+Accept: {{contentType}}
+
+### Create game
+POST {{host}}/games
+Content-Type: {{contentType}}
+
+{
+  "name": "Cyberpunk 2077",
+  "genre": "RPG"
+}
+
+### 4. With Request Variables (for dynamic values)
+
+  @baseUrl = https://localhost:7042
+
+### Variable for game ID
+@gameId = 1
+
+### Get specific game
+GET {{baseUrl}}/games/{{gameId}}
+
+### Or set variable in request
+GET {{baseUrl}}/games/{{$guid}}
+
+
+### 5. Organized by Resource Type
+
+
+### =========== GAMES ===========
+### Get all games
+GET https://localhost:7042/games
+
+### Get game by ID
+GET https://localhost:7042/games/1
+
+### Create game
+POST https://localhost:7042/games
+Content-Type: application/json
+{
+  "title": "New Game"
+}
+
+### =========== PLAYERS ===========
+### Get all players
+GET https://localhost:7042/players
+
+### Create player
+POST https://localhost:7042/players
+Content-Type: application/json
+{
+  "name": "Player1"
+}
+
+### =========== SCORES ===========
+### Get scores for game
+GET https://localhost:7042/games/1/scores
+
+### Submit score
+POST https://localhost:7042/scores
+Content-Type: application/json
+{
+  "gameId": 1,
+  "playerId": 1,
+  "score": 1000
+}
+
+
+
+### 6. With Authentication
+
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+### Get games (authenticated)
+GET https://localhost:7042/games
+Authorization: Bearer {{token}}
+
+### Create game (requires auth)
+POST https://localhost:7042/games
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Secret Game"
+}
+
+
+Tips for Working with HTTP Files:
+
+    Separate requests with ### on a line by itself
+
+    Click the "Send Request" link above each request in VS Code to execute it
+
+
+Save responses to variables:
+
+### Login and save token
+POST https://localhost:7042/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {%
+    client.global.set("auth_token", response.body.token);
+%}
+
+### Use the token
+GET https://localhost:7042/games
+Authorization: Bearer {{auth_token}}
